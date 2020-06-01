@@ -2,6 +2,7 @@ import React, { useState, useEffect} from 'react';
 import Story from './Story';
 import { getStoryIds } from '../services/Api'; 
 import { useInfiniteScroll } from '../hooks/useInfiniteScroll';
+import { Squares } from './Squares';
 
 
 function StoryList() {
@@ -16,11 +17,18 @@ function StoryList() {
     }, []);
 
     return (
-        <div>
-            Top News:
-            {storyList.slice(0, count).map(storyId => (
-                <Story key={storyId} storyId={storyId} />
-            ))}
+        <div className="storiesContainer">
+            <div className="titleContainer">
+                <div className="title">HackerNews</div>
+                <Squares />
+            </div>
+            
+            <div className="listContainer">
+                {storyList.slice(0, count).map(storyId => (
+                    <Story key={storyId} storyId={storyId} />
+                ))}
+            </div>
+
         </div>
     )
 }

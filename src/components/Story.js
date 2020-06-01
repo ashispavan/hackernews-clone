@@ -1,7 +1,7 @@
-import React, { useEffect, useState} from 'react';
+import React, { useEffect, useState, memo } from 'react';
 import { getStory } from '../services/Api';
 
-function Story({storyId}) {
+const Story = memo(function Story({storyId}) {
 
     const [story, setStory] = useState({});
     
@@ -13,13 +13,20 @@ function Story({storyId}) {
 
     const { title, url, by } = story;
 
-    return (
-        <div>
-            <h3>{title}</h3>
-            <a target='_blank' rel="noopener noreferrer" href={url}>{url}</a>
-            <small>{by}</small>
-        </div>
+
+
+    return url &&  (    
+            <div className='story' onClick={()=> window.open(`${url}`, `_blank`)} >
+                <span>
+                    {title}
+                </span>
+                {/* <a target='_blank' rel="noopener noreferrer" href={url}>{url}</a> */}
+                {'  by '}
+                <small>{by}</small>
+            </div>
+  
+
     )
-}
+});
 
 export default Story;
