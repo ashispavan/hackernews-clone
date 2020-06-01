@@ -16,7 +16,7 @@ function Story({storyId}) {
     return (
         <div>
             <h3>{title}</h3>
-            <a href={url}>{url}</a>
+            <a target='_blank' rel="noopener noreferrer" href={url}>{url}</a>
             <small>{by}</small>
         </div>
     )
